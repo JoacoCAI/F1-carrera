@@ -13,136 +13,327 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background: #111111;
+            background: #111;
             color: white;
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .game {
             width: 100%;
             max-width: 430px;
             min-height: 100vh;
+            margin: auto;
             background: #181818;
-            display: flex;
-            flex-direction: column;
         }
 
         .top {
-            padding: 30px 25px 20px;
-            border-bottom: 2px solid #e10600;
+            padding: 25px;
+            border-bottom: 3px solid #e10600;
         }
 
         .logo {
-            font-size: 34px;
+            font-size: 30px;
             font-weight: bold;
             letter-spacing: 2px;
         }
 
         .subtitle {
-            color: #999999;
+            color: #999;
             margin-top: 5px;
             font-size: 14px;
         }
 
         .content {
-            flex: 1;
-            padding: 30px 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 25px;
         }
 
-        .welcome {
-            font-size: 24px;
-            margin-bottom: 10px;
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 8px;
         }
 
         .description {
-            color: #aaaaaa;
+            color: #aaa;
             line-height: 1.5;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 7px;
+            background: #292929;
+            color: white;
+            font-size: 16px;
         }
 
         button {
             width: 100%;
-            padding: 17px;
-            margin-bottom: 12px;
+            padding: 16px;
+            margin-top: 25px;
             border: none;
-            border-radius: 8px;
+            border-radius: 7px;
             background: #e10600;
             color: white;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer;
         }
 
-        button:hover {
-            opacity: 0.85;
+        button:active {
+            transform: scale(0.98);
         }
 
-        .secondary {
-            background: #292929;
+        .hidden {
+            display: none;
         }
 
-        .footer {
+        .card {
+            background: #222;
             padding: 20px;
-            text-align: center;
-            color: #666666;
-            font-size: 12px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .stat:last-child {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            font-weight: bold;
+        }
+
+        .team {
+            color: #e10600;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="game">
+<div class="game">
 
-        <div class="top">
-            <div class="logo">F1 CAREER</div>
-            <div class="subtitle">Tu carrera. Tus decisiones.</div>
+    <!-- CABECERA -->
+
+    <div class="top">
+        <div class="logo">F1 CAREER</div>
+        <div class="subtitle">Tu carrera. Tus decisiones.</div>
+    </div>
+
+
+    <!-- CREAR PILOTO -->
+
+    <div id="createScreen" class="content">
+
+        <h2>Crear piloto</h2>
+
+        <div class="description">
+            Sos un joven piloto desconocido que busca
+            conseguir una oportunidad en la Fórmula 2.
         </div>
 
-        <div class="content">
+        <label>Nombre del piloto</label>
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Ej: Juan Pérez"
+        >
 
-            <div class="welcome">
-                Bienvenido, piloto.
+        <label>Nacionalidad</label>
+        <select id="nationality">
+            <option value="Argentina">🇦🇷 Argentina</option>
+            <option value="Brasil">🇧🇷 Brasil</option>
+            <option value="España">🇪🇸 España</option>
+            <option value="Italia">🇮🇹 Italia</option>
+            <option value="Francia">🇫🇷 Francia</option>
+            <option value="Alemania">🇩🇪 Alemania</option>
+            <option value="Reino Unido">🇬🇧 Reino Unido</option>
+            <option value="Estados Unidos">🇺🇸 Estados Unidos</option>
+            <option value="Otro">🌎 Otro</option>
+        </select>
+
+        <label>Edad</label>
+        <select id="age">
+            <option value="17">17 años</option>
+            <option value="18" selected>18 años</option>
+            <option value="19">19 años</option>
+            <option value="20">20 años</option>
+        </select>
+
+        <label>Número</label>
+        <input
+            type="number"
+            id="number"
+            min="1"
+            max="99"
+            value="27"
+        >
+
+        <label>Estilo de piloto</label>
+        <select id="style">
+            <option value="aggressive">🔥 Agresivo</option>
+            <option value="technical">🎯 Técnico</option>
+            <option value="intelligent">🧠 Inteligente</option>
+            <option value="brave">⚡ Valiente</option>
+        </select>
+
+        <button onclick="createDriver()">
+            COMENZAR CARRERA
+        </button>
+
+    </div>
+
+
+    <!-- PERFIL -->
+
+    <div id="profileScreen" class="content hidden">
+
+        <h2 id="profileName"></h2>
+
+        <div class="description">
+            Tu carrera acaba de comenzar.
+        </div>
+
+        <div class="card">
+
+            <div class="stat">
+                <span>Nacionalidad</span>
+                <span id="profileNationality"></span>
             </div>
 
-            <div class="description">
-                Comenzá tu carrera desde abajo y convertite
-                en una leyenda de la Fórmula 1.
+            <div class="stat">
+                <span>Edad</span>
+                <span id="profileAge"></span>
             </div>
 
-            <button onclick="newCareer()">
-                NUEVA CARRERA
-            </button>
+            <div class="stat">
+                <span>Número</span>
+                <span id="profileNumber"></span>
+            </div>
 
-            <button class="secondary" onclick="continueCareer()">
-                CONTINUAR
-            </button>
+            <div class="stat">
+                <span>Estilo</span>
+                <span id="profileStyle"></span>
+            </div>
 
         </div>
 
-        <div class="footer">
-            F1 Career — Primera versión
+
+        <div class="card">
+
+            <div class="stat">
+                <span>Valoración</span>
+                <span class="stat-value">52</span>
+            </div>
+
+            <div class="stat">
+                <span>Reputación</span>
+                <span class="stat-value">5</span>
+            </div>
+
+            <div class="stat">
+                <span>Dinero</span>
+                <span class="stat-value">$25.000</span>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <p>🏎️ Categoría</p>
+
+            <p class="team">
+                FÓRMULA 2 — PILOTO SUPLENTE
+            </p>
+
+            <p>
+                Tu primera oportunidad acaba de llegar.
+            </p>
+
         </div>
 
     </div>
 
-    <script>
+</div>
 
-        function newCareer() {
-            alert("¡Comenzamos tu carrera!");
-        }
 
-        function continueCareer() {
-            alert("Todavía no hay ninguna carrera guardada.");
-        }
+<script>
 
-    </script>
+function createDriver() {
+
+    const name = document.getElementById("playerName").value;
+    const nationality = document.getElementById("nationality").value;
+    const age = document.getElementById("age").value;
+    const number = document.getElementById("number").value;
+    const style = document.getElementById("style").value;
+
+
+    if (name.trim() === "") {
+        alert("Escribí el nombre de tu piloto.");
+        return;
+    }
+
+
+    let styleName = "";
+
+    if (style === "aggressive") {
+        styleName = "🔥 Agresivo";
+    }
+
+    if (style === "technical") {
+        styleName = "🎯 Técnico";
+    }
+
+    if (style === "intelligent") {
+        styleName = "🧠 Inteligente";
+    }
+
+    if (style === "brave") {
+        styleName = "⚡ Valiente";
+    }
+
+
+    document.getElementById("profileName").textContent =
+        name;
+
+    document.getElementById("profileNationality").textContent =
+        nationality;
+
+    document.getElementById("profileAge").textContent =
+        age + " años";
+
+    document.getElementById("profileNumber").textContent =
+        "#" + number;
+
+    document.getElementById("profileStyle").textContent =
+        styleName;
+
+
+    document.getElementById("createScreen").classList.add("hidden");
+
+    document.getElementById("profileScreen").classList.remove("hidden");
+
+}
+
+</script>
 
 </body>
 </html>
