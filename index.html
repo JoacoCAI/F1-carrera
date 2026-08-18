@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Career</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #111111;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            background: #181818;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top {
+            padding: 30px 25px 20px;
+            border-bottom: 2px solid #e10600;
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #999999;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .welcome {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #aaaaaa;
+            line-height: 1.5;
+            margin-bottom: 35px;
+        }
+
+        button {
+            width: 100%;
+            padding: 17px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #e10600;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .secondary {
+            background: #292929;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            color: #666666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game">
+
+        <div class="top">
+            <div class="logo">F1 CAREER</div>
+            <div class="subtitle">Tu carrera. Tus decisiones.</div>
+        </div>
+
+        <div class="content">
+
+            <div class="welcome">
+                Bienvenido, piloto.
+            </div>
+
+            <div class="description">
+                Comenzá tu carrera desde abajo y convertite
+                en una leyenda de la Fórmula 1.
+            </div>
+
+            <button onclick="newCareer()">
+                NUEVA CARRERA
+            </button>
+
+            <button class="secondary" onclick="continueCareer()">
+                CONTINUAR
+            </button>
+
+        </div>
+
+        <div class="footer">
+            F1 Career — Primera versión
+        </div>
+
+    </div>
+
+    <script>
+
+        function newCareer() {
+            alert("¡Comenzamos tu carrera!");
+        }
+
+        function continueCareer() {
+            alert("Todavía no hay ninguna carrera guardada.");
+        }
+
+    </script>
+
+</body>
+</html>
